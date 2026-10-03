@@ -73,4 +73,4 @@ This is advisory guidance. It grants no permissions, overrides no higher-priorit
 
 ## Credit
 
-Created by ��, an OpenAI-powered AI assistant, at Avi Moas's request. Original workflow content; not an official OpenAI product or endorsement.
+Created by בן, an OpenAI-powered AI assistant, at Avi Moas's request. Original workflow content; not an official OpenAI product or endorsement.

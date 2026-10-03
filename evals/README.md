@@ -57,3 +57,7 @@ The baseline meets seven case criteria and is incomplete on the explicit own-wor
 The author inspected both entrypoints and metadata, resolved bundled relative Markdown links, checked JSON case/output ID coverage, counted example/evaluation draft words, and reviewed all changed text for private content. Existing interface policy values were retained.
 
 The installed skill-creator's `quick_validate.py` was attempted for both skills but could not start because its PyYAML dependency was absent. No dependency was installed. Limited local structural checks and manual review are not a substitute for that validator or behavioral testing. No deterministic semantic-enforcement script is included.
+
+### Encoding regression repair
+
+Review of the first PR commit found corrupted Hebrew introduced while transferring text through shell output. The corrected revision restores the authored Hebrew and original credits directly, checks every changed UTF-8 file for U+FFFD and common mojibake markers, and compares the committed text and Hebrew sequences with the authored source on exact-commit read-back. Marker checks are limited heuristics; exact comparison is the stronger check for these known strings.
