@@ -1,0 +1,12 @@
+interface:
+  display_name: Preserve Owner Intent
+  short_description: Keep goals intact while adapting execution
+  default_prompt: Use $preserve-owner-intent to continue this task while preserving
+    my latest goals and constraints.
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
