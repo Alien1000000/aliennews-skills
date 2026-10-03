@@ -21,13 +21,13 @@ Unchanged constraints: Customer-facing; under 70 words; draft only; no invented 
 Repair: Replace generic reassurance with the three supported facts.
 Acceptance check: Contains Tuesday -> Thursday dispatch change, packaging cause, Wednesday recheck;
 does not claim an arrival date or completed recheck; remains under 70 words.
-Observed result: Revised draft contains each fact; 39 whitespace-separated words; no send performed.
+Observed result: Revised draft contains each fact; 34 whitespace-separated words; no send performed.
 Status: verified (draft content only)
 ```
 
 **Corrected draft:**
 
-> Your dispatch date has moved from Tuesday to Thursday after a packaging check failed. We have scheduled another check for Wednesday. We do not yet have an arrival estimate. We're sorry for the delay and will share confirmed updates.
+> Your dispatch date has moved from Tuesday to Thursday after a packaging check failed. We have scheduled another check for Wednesday. We do not yet have an arrival estimate. We're sorry for the delay.
 
 **Final result:** "Revised the draft to explain the delay and Wednesday's recheck. Checked the facts against your notes and confirmed it is under 70 words. It remains a draft."
 
