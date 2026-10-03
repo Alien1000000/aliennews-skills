@@ -1,43 +1,75 @@
 ---
 name: feedback-to-fix
-description: Turn user criticism, rejected drafts, incorrect results, or failed checks into focused and verified improvements. Use when the user says a result is vague, wrong, incomplete, off-tone, or still broken. Diagnose from evidence, preserve unaffected goals and constraints, execute authorized fixes, and report actual verification without treating criticism as cancellation.
+description: Diagnose and repair an existing result after criticism, a rejected draft, or a failed check. Use for feedback such as vague, wrong, incomplete, off-tone, or still broken. Produce a revised result and evidence; a pure cancellation needs no repair workflow.
 ---
 
 # Feedback to Fix
 
-## Understand the correction
+Turn feedback into an observable correction. This skill decides **what is defective, how to repair it, and how to check the repair**. It does not redefine the user's goal.
 
-Read the feedback alongside the actual deliverable and latest user request. Separate:
-- An observable defect: incorrect fact, missing requirement, poor tone, broken behavior, or absent evidence.
-- A new requirement or explicit replacement goal.
-- An explicit stop or cancellation.
-- A claim that needs checking before accepting or rejecting it.
+## Diagnose against the actual result
 
-Acknowledge the specific defect the evidence supports. Do not automatically agree with every premise or apologize instead of investigating. If the feedback conflicts with a source, explain the discrepancy briefly and resolve what can be checked. Ask a focused question only when missing information materially changes the fix.
+Read the feedback, artifact, latest request, and relevant source together. Classify each material point as:
+- Supported defect: identify where the result violates a requirement or source.
+- Preference or new requirement: apply it to the affected part.
+- Unverified claim: inspect evidence before accepting or rejecting it.
+- Changed target or cancellation: update or stop the affected work before repairing anything.
 
-## Choose a concrete repair
+Acknowledge only what the evidence supports. For false criticism, show the calculation, source, or reproduction briefly; do not introduce an error to agree. For subjective feedback, translate the preference into a concrete edit rather than pretending it has an objective score.
 
-Identify the smallest effective change that addresses the defect, not merely the smallest cosmetic edit. Preserve the latest authorized outcome and unaffected requirements, including audience, scope, cadence, destination, and stopping conditions. Do not reduce or cancel the service because its quality was criticized. Honor a clear stop immediately; honor an explicitly changed target rather than defending the previous one.
+When "still broken" lacks enough information to reproduce, inspect available logs or artifacts first. Ask for the missing input or failing path only when it materially changes the repair.
 
-Form a short, observable acceptance check before revising. For example:
-- Vague update: identify each supported blocker, its impact, and the next action; label missing ownership or dates instead of inventing them.
-- Wrong calculation: recompute from the supplied inputs and check units and arithmetic.
-- Broken interaction: reproduce the reported path, repair the cause, and rerun that path plus a nearby regression check.
-- Off-tone draft: revise the language for the intended reader while preserving factual claims and commitments.
+## Choose an acceptance check before editing
 
-Proceed with reversible, authorized repairs without asking about every small choice. Approval to revise a draft is not approval to send it. Changes to permissions, external commitments, or materially broader scope still require the applicable authorization. Do not evade an access denial by changing tools.
+Write a short check that could fail on the old result and pass on the corrected result. Use the smallest effective repair, which may require replacing a flawed approach.
 
-## Execute and verify
+| Defect | Repair | Useful check |
+| --- | --- | --- |
+| Vague status | Replace generalities with supported blocker, impact, next action | Each claim traces to supplied notes; unknown owner/date stays unknown |
+| Incorrect total | Recompute from original inputs and units | Independent arithmetic, including the disputed row |
+| Broken interaction | Reproduce the reported path and repair its cause | Run that path and one nearby unaffected path |
+| Off-tone message | Change wording for the intended reader | Preserve factual claims, commitments, length, and send boundary |
+| Missing requirement | Add the missing content or behavior | Check the requirement directly and one constraint the addition might disturb |
 
-Inspect the relevant source or artifact, apply the repair, and run the acceptance check. Where useful, check one adjacent requirement to catch a regression. Prefer direct evidence to reassurance. Compare the revised artifact with the user's latest instruction, not just with the previous version.
+For multi-step or repeated repairs, optionally keep this record in the task context:
 
-If a fix cannot be completed, preserve valid work and report the real blocker and smallest required next step. Continue independent authorized work. Distinguish a proposed fix, an applied fix, and a verified fix. Never imply success from a passing structural check when the user's desired outcome still depends on unverified behavior, saving, installation, or delivery.
+```text
+Feedback:
+Evidence and diagnosis:
+Unchanged constraints:
+Repair:
+Acceptance check:
+Observed result:
+Status: proposed / applied / verified / blocked
+```
 
-## Close the loop briefly
+Use it to track unresolved claims, not as mandatory ceremony or a substitute for doing the repair.
 
-Provide the corrected result or link, what materially changed, and the relevant verification or remaining limitation. Avoid a long apology, a new unrelated promise, or a statement that the user must abandon the original goal. Do not claim permanent learning or guaranteed prevention from one successful repair. Save a lasting preference or change a standing process only when the user actually authorizes it and the applicable tools and policies permit it.
+## Repair within authorization
 
-Treat this skill as advisory workflow guidance, not a runtime guarantee. Higher-priority instructions, safety rules, and action-specific permissions remain controlling; this skill grants no new authority.
+Apply reversible authorized edits. Preserve unaffected requirements, including cadence, destination, audience, and stop conditions. A request to fix a draft authorizes a corrected draft, not sending it. Do not cancel a service because its quality was criticized; do honor an actual stop.
+
+Do not expand scope, alter permissions, save lasting preferences, or make external commitments without applicable authorization. If access is denied, stop that action and report the denial. Changing tools to evade it is not a repair.
+
+## Verify and decide what remains
+
+Run the chosen check on the actual revised result. Inspect the check's output, not just whether it started. Check an adjacent requirement when the repair could break it.
+
+If verification fails:
+1. Use the observed failure to revise the diagnosis.
+2. Make another authorized repair only when there is a concrete reason it should help.
+3. Rerun the relevant check after that change.
+4. Stop blind retries when no justified next fix exists, required access/input is missing, or the user cancels. Preserve useful work and report the remaining failure.
+
+A passing syntax or format check does not prove behavior, factual accuracy, saving, or delivery. If the needed environment is unavailable, say "applied, unverified" and name the missing check. Never relabel a failed check as success.
+
+## Return the repaired result
+
+Provide the corrected artifact or content, the material change, and actual verification or remaining blocker. When a claim was mistaken, provide the evidence and any clarification that improves the artifact. Avoid replacing the repair with an apology or promising permanent learning.
+
+Read [worked examples](references/worked-examples.md) for a complete vague-update repair, a disputed calculation, or an applied fix whose behavioral check fails.
+
+This is advisory guidance. It grants no permissions, overrides no higher-priority instructions, and does not guarantee that future defects will be prevented.
 
 ## Credit
 

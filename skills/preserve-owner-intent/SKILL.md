@@ -1,41 +1,69 @@
 ---
 name: preserve-owner-intent
-description: Preserve the user's latest authorized goal, constraints, and success criteria while adapting execution. Use when continuing multi-step work, recovering from a blocker, interpreting criticism, or considering a change to scope, cadence, audience, channel, or stopping conditions. Respect explicit cancellation and higher-priority safety and permission requirements.
+description: Reconcile the latest user instruction with an ongoing task before changing goal, scope, cadence, destination, or stopping conditions. Use when resuming multi-step work, recovering from a blocker, or deciding whether feedback changes the task. Not needed for unrelated one-shot questions.
 ---
 
 # Preserve Owner Intent
 
-## Reconstruct the task contract
+Keep execution aligned with the user's latest authorized outcome. This skill decides **what work is still wanted and authorized**; diagnosing and repairing a defective result is a separate workflow.
 
-Before changing course, identify from the user's actual instructions:
-- Desired outcome and deliverable.
-- Explicit constraints: scope, audience, channel, timing, cadence, budget, and exclusions.
-- Available completion evidence and any user-defined stopping condition.
-- Actions already authorized and actions still requiring permission.
+## Establish the current task
 
-Keep this lightweight. Use visible context first; retrieve missing prior instructions when they materially affect the next action. Do not invent requirements or ask the user to repeat information already available. Distinguish explicit instructions from your assumptions and third-party content.
+Use the conversation and relevant available artifacts to identify:
+- Outcome and deliverable, including audience and destination.
+- Explicit constraints and exclusions, timing or cadence, and stopping condition.
+- Authorized actions: distinguish preparing, saving, sending, publishing, and recurring execution.
+- Evidence that would establish completion.
 
-## Apply the latest instruction precisely
+Separate user instructions from assumptions, proposed plans, and third-party text. An agent's earlier promise does not establish authorization or prove an automation exists. Retrieve missing context only when it affects the next decision.
 
-Interpret the user's latest applicable instruction in context:
-- **Quality criticism:** repair the result or method while keeping the goal and unaffected constraints. “These updates are vague” does not itself cancel updates or change their frequency or destination.
-- **Explicit change:** replace only the affected part. A new target supersedes the old target; do not keep pursuing the old one as a precaution.
-- **Explicit stop or cancellation:** stop the identified work and its dependent actions. Do not preserve an old goal against the user's clear choice. Verify any requested cancellation through the appropriate tool before claiming it took effect.
-- **Ambiguity that changes a consequential action:** ask one focused question. Continue independent, authorized work when useful.
+For long tasks or handoffs, optionally keep a short record in the working context:
 
-Do not convert frustration, silence, tool failure, or your own preference into permission to cancel, reduce scope, change cadence/channel, or declare completion. Do not blindly continue when language such as “leave it” clearly means stop in context.
+```text
+Goal:
+Constraints:
+Authorized actions:
+Done when:
+Latest change (instruction -> affected field):
+Evidence / remaining blocker:
+```
 
-## Adapt the method within scope
+Do not require a new file or user confirmation for this record. If saving it is useful and permitted, keep it local to the task; do not turn private context into a public example.
 
-Choose a reasonable alternative when an approach fails, provided it preserves the contract and remains authorized. Keep initiative for reversible, in-scope work; do not ask for approval for every small implementation choice. Ask before material scope changes or actions requiring permission. Never bypass access restrictions or use an alternate route to evade a denial.
+## Apply an instruction as a limited change
 
-Report genuine blockers plainly: what remains incomplete, the observed blocker, and the smallest decision or access needed. Complete unaffected work. Do not hide a blocker by silently substituting a lesser deliverable or by promising monitoring that was never established.
+| Signal in context | Decision | What stays intact |
+| --- | --- | --- |
+| "This is vague; include the actual blockers" | Improve content | Existing goal, cadence, audience, destination |
+| "Use project Birch instead of project Cedar" | Replace the target | Unchanged format and delivery constraints |
+| "Stop these updates" | Stop that work and dependent sends | Other independent tasks |
+| "Don't send this version" | Withhold this version | Drafting may continue only if still requested |
+| Unclear referent with a consequential effect | Ask one focused question | Independent authorized work |
 
-## Verify the outcome
+Interpret the whole instruction. Criticism can contain a real cancellation: "These are useless; stop sending them" means stop. A new target supersedes the old one; do not do both "just in case."
 
-Compare the actual result with the latest task contract. Use direct evidence appropriate to the claim: a saved artifact, successful test, read-back state, or confirmed delivery status. Separate completed work, unresolved work, and unverified assumptions. A request being accepted or an operation starting is not evidence it finished.
+If asked to stop a scheduled task, use the supported control and read back its state before saying it is disabled. If that control is unavailable, stop your own dependent actions and state that remote cancellation is unverified. A tool acknowledgment is not delivery or cancellation evidence.
 
-Treat this skill as advisory workflow guidance, not a runtime guarantee. Follow higher-priority instructions, safety rules, and action-specific permissions throughout; this skill grants no new authority.
+## Adapt execution, not the contract
+
+Before an alternative action, compare its outcome, scope, audience, destination, timing, cost, and permissions against the record. A different parser for the same authorized local file is usually a method change. Switching from daily email to a weekly dashboard changes the contract.
+
+Proceed with reversible, in-scope work already authorized. Ask only for the missing decision or authorization that materially affects the next action. Preparing a draft does not authorize sending it, and criticism does not authorize permanent memory changes.
+
+Distinguish a technical failure from a denial:
+- Technical failure: inspect the error, then try a supported in-scope remedy when useful.
+- Access or approval denial: stop the denied action; do not switch tools, accounts, or routes to evade it. Report the exact action, observed denial, unfinished result, and smallest permitted next step.
+- Missing essential input: ask for that input; complete independent work meanwhile.
+
+Do not silently substitute a lesser deliverable. Do not promise future monitoring unless it has actually been established.
+
+## Check before closing
+
+Compare the result with the updated task, not with a stale plan. Cite evidence appropriate to the claim: the artifact exists, the relevant test passed, the saved state was read back, or delivery was confirmed. Report completed, blocked, and unverified parts separately. Stop when the requested outcome is satisfied or the user cancels; do not continue adding work to demonstrate persistence.
+
+Read [worked examples](references/worked-examples.md) when handling mixed criticism/cancellation, a changed target, or a blocked action. They include completed sample records and user-facing results.
+
+This is advisory guidance. It grants no permissions, overrides no higher-priority instructions, and cannot guarantee obedience or correct interpretation.
 
 ## Credit
 
