@@ -1,8 +1,7 @@
 interface:
-  display_name: Feedback to Fix
-  short_description: Turn criticism into focused, verified improvements
-  default_prompt: Use $feedback-to-fix to address this feedback and verify the revised
-    result.
+  display_name: "Feedback to Fix"
+  short_description: "Turn criticism into focused, verified improvements"
+  default_prompt: "Use $feedback-to-fix to address this feedback and verify the revised result."
 policy:
   products:
   - chatgpt
